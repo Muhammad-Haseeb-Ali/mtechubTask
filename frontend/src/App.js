@@ -1,21 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import Enter from "./components/Enter";
 import ChatWrapper from "./components/ChatWrapper";
 
-
-
 function App() {
-  // useEffect(() => {
-  //   const socket = io("ws://localhost:3000/");
+  const [identity, setIdentity] = useState(localStorage.getItem("username"));
 
-  //   return () => socket.close();
-  // });
+  useEffect(() => {
+    if (identity) {
+      const socket = io("ws://localhost:3000/");
+
+      return () => socket.close();
+    }
+  }, [identity]);
 
   return (
     <>
-      {/* <Enter /> */}
-      <ChatWrapper/>
+      <ChatWrapper />
+      {!identity && <Enter setIdentity={setIdentity} />}
     </>
   );
 }

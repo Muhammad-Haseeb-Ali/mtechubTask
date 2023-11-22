@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import Popup from "./Popup";
+import { useRef } from "react";
 
-export default function Enter() {
+export default function Enter({setIdentity}) {
+    const userNameRef = useRef()
+
   const Enter = styled.div`
     position: absolute;
     top: 50%;
@@ -33,14 +36,20 @@ export default function Enter() {
     }
   `;
 
+  const setUserName = ()=>{
+    const userName = userNameRef.current.value;
+    localStorage.setItem("username",userName)
+    setIdentity(userName)
+  }
+
   return (
     <Popup>
       <Enter>
         <h1>Welcome to Chat</h1>
         <p>Create Unique Username</p>
-        <input type="text" placeholder="@username" />
+        <input type="text" placeholder="@username" ref={userNameRef} />
         <center>
-          <button>Enter</button>
+          <button onClick={setUserName}>Enter</button>
         </center>
       </Enter>
     </Popup>
