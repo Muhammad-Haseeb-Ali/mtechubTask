@@ -23,13 +23,14 @@ export default function ChatSection({ messages }) {
   flex-flow: column;
 
     img {
-      width: 500px;
+      width: 250px;
       background-color: gray;
+      padding: 10px;
       border-radius: 10px;
+      margin-bottom: 5px;
     }
 
     p {
-      max-width: 500px;
       padding: 10px 20px;
       border-radius: 12px;
       margin-bottom: 10px;
@@ -38,6 +39,7 @@ export default function ChatSection({ messages }) {
 
   const Send = styled(Msg)`
     align-self: flex-end;
+    align-items: flex-end;
     small{
       text-align: right;
     }
@@ -49,6 +51,7 @@ export default function ChatSection({ messages }) {
 
   const Recive = styled(Msg)`
     align-self: flex-start;
+    align-items: flex-start;
     p {
       background-color: #eff1f2;
     }
