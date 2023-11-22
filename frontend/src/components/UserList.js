@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function UserList() {
+export default function UserList({connections}) {
   const UserList = styled.ul`
     height: 100vh;
     width: 250px;
@@ -17,12 +17,7 @@ export default function UserList() {
       margin: 0 10px;
       margin-bottom: 10px;
       padding: 10px;
-      border-radius: 10px;
       cursor: pointer;
-    }
-
-    li:hover {
-      background-color: gray;
     }
 
     h3 {
@@ -36,30 +31,14 @@ export default function UserList() {
 
   return (
     <UserList>
-      <li>
-        <h3>haseeb</h3>
-        <p>online</p>
-      </li>
-      <li>
-        <h3>haseeb</h3>
-        <p>online</p>
-      </li>
-      <li>
-        <h3>haseeb</h3>
-        <p>online</p>
-      </li>
-      <li>
-        <h3>haseeb</h3>
-        <p>online</p>
-      </li>
-      <li>
-        <h3>haseeb</h3>
-        <p>online</p>
-      </li>
-      <li>
-        <h3>haseeb</h3>
-        <p>online</p>
-      </li>
+      {
+        connections.map((connection, id)=>(
+          <li key={id}>
+          <h3>{connection.name}</h3>
+          <p>{connection.status}</p>
+        </li>
+        ))
+      }
     </UserList>
   );
 }

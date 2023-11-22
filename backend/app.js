@@ -19,4 +19,4 @@ app.use("/public",express.static(path.join(__dirname, 'public')));
 
 SocketHandler(socketServer)
 
-module.exports = app;
+module.exports = {app, server: socketServer};

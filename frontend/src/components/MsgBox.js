@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FiSend } from "react-icons/fi";
 import { FaLink } from "react-icons/fa";
 import { useRef } from "react";
+import { sendMessage } from "../utils/socket";
 
 export default function MsgBox() {
     const imgRef = useRef()
@@ -9,9 +10,6 @@ export default function MsgBox() {
 
 
   const MsgBox = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 100px;
     display: flex;
@@ -49,11 +47,11 @@ export default function MsgBox() {
     }
   `;
 
-    const sendMsg = ()=>{
-        const msg = msgRef.current.value
+    const msgHandler = ()=>{
+        const msg = msgRef.current.value.trim()
         const img = imgRef.current.files.item(0)
 
-        console.log({msg, img})
+        if(msg.length > 0 || img) sendMessage(msg, img)
     }
 
   return (
@@ -63,7 +61,7 @@ export default function MsgBox() {
       <label for="image" >
         <FaLink />
       </label>
-      <button onClick={sendMsg}>
+      <button onClick={msgHandler}>
         <FiSend />
       </button>
     </MsgBox>

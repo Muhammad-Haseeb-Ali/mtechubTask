@@ -15,6 +15,10 @@ export default function Enter({setIdentity}) {
     background-color: #eff1f2;
     border-radius: 20px;
 
+    p{
+      margin: 3px;
+    }
+
     input {
       width: 100%;
       padding: 7px;
@@ -46,7 +50,7 @@ export default function Enter({setIdentity}) {
     <Popup>
       <Enter>
         <h1>Welcome to Chat</h1>
-        <p>Create Unique Username</p>
+        <p>Enter your Name to create Identity.</p>
         <input type="text" placeholder="@username" ref={userNameRef} />
         <center>
           <button onClick={setUserName}>Enter</button>

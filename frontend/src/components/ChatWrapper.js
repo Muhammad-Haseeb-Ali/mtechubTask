@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import UserList from "./UserList";
 import ChatSection from "./ChatSection";
+import useSockets from "../hooks/useSockets";
 
-export default function ChatWrapper() {
-    
+export default function ChatWrapper({identity}) {
+    const {connections, messages} = useSockets(identity)
+
   const ChatWrapper = styled.main`
     display: flex;
     flex-flow: row;
@@ -11,8 +13,8 @@ export default function ChatWrapper() {
 
   return (
     <ChatWrapper>
-      <UserList />
-      <ChatSection />
+      <UserList connections={connections} />
+      <ChatSection messages={messages} />
     </ChatWrapper>
   );
 }
